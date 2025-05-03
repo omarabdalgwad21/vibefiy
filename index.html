@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibeify - Transform Your Photos</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Shimmer Background -->
+    <div class="shimmer-bg"></div>
+
+    <!-- Optional Particles Background -->
+    <div class="particles" id="particles-js"></div>
+
+    <!-- Splash Screen -->
+    <div id="splash">
+        <div class="spinner"></div>
+        <div class="splash-logo">Vibeify</div>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header">
+        <nav>
+            <a href="index.html" class="logo">Vibeify</a>
+            <div>
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="animate-typing">Transform Your Photos</h1>
+        <p class="subtext animate-fade-in delay-1">
+            Vibeify is a powerful yet simple photo editor. Adjust, transform,
+            and add stunning effects to your images in seconds.
+        </p>
+        <a href="editor.html" class="btn animate-fade-in delay-2">Start Editing</a>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <h2>Features</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <div class="feature-title">
+                    <span class="feature-icon">⚙️</span>
+                    <h3>Adjustments</h3>
+                </div>
+                <p>Fine-tune brightness, contrast, saturation, and blur with precision sliders.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-title">
+                    <span class="feature-icon">↻</span>
+                    <h3>Transform</h3>
+                </div>
+                <p>Rotate, flip, and crop your images to get the perfect composition.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-title">
+                    <span class="feature-icon">✨</span>
+                    <h3>Filters</h3>
+                </div>
+                <p>Apply beautiful filters including grayscale, sepia, vintage, cool, and warm.</p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-title">
+                    <span class="feature-icon">🎨</span>
+                    <h3>Effects</h3>
+                </div>
+                <p>More creative effects coming soon to take your photos to the next level.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">Vibeify</div>
+            <p class="footer-slogan">See the Vibe. Edit the Moment.</p>
+            <nav class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="#about-section">About</a>
+                <a href="editor.html">Editor</a>
+            </nav>
+            <p class="footer-copyright">© 2024 Vibeify</p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+    <script>
+        // Add visible class to feature items on scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const featureItems = document.querySelectorAll('.feature-item');
+
+            function checkVisibility() {
+                featureItems.forEach(item => {
+                    const rect = item.getBoundingClientRect();
+                    const isVisible = rect.top <= window.innerHeight * 0.8;
+
+                    if (isVisible && !item.classList.contains('visible')) {
+                        item.classList.add('visible');
+                    }
+                });
+            }
+
+            // Initial check
+            setTimeout(checkVisibility, 300);
+
+            // Check on scroll
+            window.addEventListener('scroll', checkVisibility);
+        });
+    </script>
+</body>
+
+</html>

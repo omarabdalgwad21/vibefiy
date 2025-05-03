@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Vibeify - Photo Editor</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Minimal header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Vibeify</a>
+        </nav>
+    </header>
+
+    <!-- Editor area -->
+    <main class="editor">
+        <div class="editor-container">
+            <h1 class="editor-title">Photo Editor</h1>
+
+            <div class="editor-workspace">
+                <!-- Image Container (Centered) -->
+                <div class="image-container">
+                    <div class="image-wrapper">
+                        <canvas id="editor-canvas"></canvas>
+                        <div class="image-controls">
+                            <button class="control-btn" title="Zoom In">+</button>
+                            <button class="control-btn" title="Zoom Out">-</button>
+                            <button class="control-btn" title="Reset">↺</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Side Toolbar (Vertical Right) -->
+    <div class="side-toolbar">
+        <button class="side-btn" id="upload-new-btn">
+            <span class="btn-icon">📷</span>
+            <span class="btn-label">Upload</span>
+        </button>
+
+        <button class="side-btn" data-panel="adjust-panel">
+            <span class="btn-icon">⚙️</span>
+            <span class="btn-label">Adjust</span>
+        </button>
+
+        <button class="side-btn" data-panel="transform-panel">
+            <span class="btn-icon">↻</span>
+            <span class="btn-label">Transform</span>
+        </button>
+
+        <button class="side-btn" data-panel="filters-panel">
+            <span class="btn-icon">✨</span>
+            <span class="btn-label">Filters</span>
+        </button>
+
+        <button class="side-btn" data-panel="effects-panel">
+            <span class="btn-icon">🎨</span>
+            <span class="btn-label">Effects</span>
+        </button>
+
+        <div class="toolbar-spacer"></div>
+
+        <button class="side-btn primary-side-btn">
+            <span class="btn-icon">💾</span>
+            <span class="btn-label">Save</span>
+        </button>
+
+        <button class="side-btn">
+            <span class="btn-icon">↺</span>
+            <span class="btn-label">Reset</span>
+        </button>
+
+        <button class="side-btn">
+            <span class="btn-icon">↩</span>
+            <span class="btn-label">Undo</span>
+        </button>
+    </div>
+
+    <!-- Tool Panels (Appear next to buttons) -->
+    <div id="adjust-panel" class="tool-panel adjust-panel">
+        <h3>Adjustments</h3>
+
+        <div class="slider-control">
+            <label for="brightness-slider">Brightness</label>
+            <input type="range" id="brightness-slider" min="0" max="200" value="100">
+            <div class="slider-value">
+                <span class="value-display">100</span>
+            </div>
+        </div>
+
+        <div class="slider-control">
+            <label for="contrast-slider">Contrast</label>
+            <input type="range" id="contrast-slider" min="0" max="200" value="100">
+            <div class="slider-value">
+                <span class="value-display">100</span>
+            </div>
+        </div>
+
+        <div class="slider-control">
+            <label for="saturation-slider">Saturation</label>
+            <input type="range" id="saturation-slider" min="0" max="200" value="100">
+            <div class="slider-value">
+                <span class="value-display">100</span>
+            </div>
+        </div>
+
+        <div class="slider-control">
+            <label for="blur-slider">Blur</label>
+            <input type="range" id="blur-slider" min="0" max="10" value="0">
+            <div class="slider-value">
+                <span class="value-display">0</span>
+            </div>
+        </div>
+    </div>
+
+    <div id="transform-panel" class="tool-panel transform-panel">
+        <h3>Transform</h3>
+        <div class="transform-controls">
+            <button id="rotate-left" class="tool-btn">Rotate Left</button>
+            <button id="rotate-right" class="tool-btn">Rotate Right</button>
+            <button id="flip" class="tool-btn">Flip</button>
+            <button id="crop" class="tool-btn">Crop</button>
+        </div>
+    </div>
+
+    <div id="filters-panel" class="tool-panel filters-panel">
+        <h3>Filters</h3>
+        <div class="filters-grid">
+            <button class="filter-btn active" data-filter="none">None</button>
+            <button class="filter-btn" data-filter="grayscale">Grayscale</button>
+            <button class="filter-btn" data-filter="sepia">Sepia</button>
+            <button class="filter-btn" data-filter="vintage">Vintage</button>
+            <button class="filter-btn" data-filter="cool">Cool</button>
+            <button class="filter-btn" data-filter="warm">Warm</button>
+        </div>
+    </div>
+
+    <div id="effects-panel" class="tool-panel effects-panel">
+        <h3>Effects</h3>
+        <p>Coming soon</p>
+    </div>
+
+    <!-- Upload area -->
+    <div id="upload-container" class="upload-container">
+        <div class="upload-area" id="upload-area">
+            <div class="upload-icon">📷</div>
+            <div class="upload-label">Drag & drop your photo here</div>
+            <div class="upload-hint">or click to select a file</div>
+            <input type="file" id="file-input" accept="image/*" hidden>
+        </div>
+    </div>
+
+    <script src="js/editor.js"></script>
+</body>
+
+</html>
